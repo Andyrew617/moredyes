@@ -1,5 +1,6 @@
 package net.neverandy.moredyes.block;
 
+import com.google.gson.JsonObject;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -52,11 +53,10 @@ public class MDBlock
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         String[] all = ColorStrings.ALL;
-
         for (String color : all)
         {
             String name = "glass_" + color;
-            final BlockGlass glass = new BlockGlass(ColorStrings.ALL, Reference.BLOCK_INFO_GLASS, true, 0, color);
+            final BlockGlass glass = new BlockGlass(color, Reference.BLOCK_INFO_GLASS, true, 0, color);
             final BlockItem glassItem = new BlockItem(glass, new Item.Properties().tab(ModSetup.tabBlocks));
             BLOCKS.register(name, () -> glass);
             ITEMS.register(name, () -> glassItem);
